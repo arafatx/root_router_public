@@ -1,0 +1,9 @@
+#!/bin/sh
+UPDATE_KEY=""
+curl --silent "https://freedns.afraid.org/dynamic/update.php?${UPDATE_KEY}" > /jffs/scripts/ddns-start.log 2>&1
+if [ $? -eq 0 ];
+then
+    /sbin/ddns_custom_updated 1
+else
+    /sbin/ddns_custom_updated 0
+fi
